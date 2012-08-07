@@ -1,5 +1,5 @@
-import datetime
 from django.db import models
+from django.utils import timezone
 from django_mailer import constants
 
 
@@ -14,7 +14,7 @@ class QueueMethods(object):
         Exclude future time-delayed messages.
 
         """
-        return self.exclude(date_queued__gt=datetime.datetime.now)
+        return self.exclude(date_queued__gt=timezone.now)
 
     def high_priority(self):
         """
